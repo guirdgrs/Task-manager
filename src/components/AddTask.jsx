@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Input from "./Input.jsx";
 
 function AddTask({onAddTaskSubmit}){
 
@@ -8,14 +9,14 @@ function AddTask({onAddTaskSubmit}){
 
     return (
         <div className="space-y-4 p-6 bg-slate-200 rounded-md shadow flex flex-col">
-            <input className="border-slate-300 outline-slate-400 px-4 py-2 rounded-md" 
+            <Input
             type="text" placeholder="Type the task..." 
             //Setting the value to the state one
             value={title}
             // Using event changer from JS to grab the value change
             onChange={(event)=> setTitle(event.target.value)}/> 
 
-            <input className="border-slate-300 outline-slate-400 px-4 py-2 rounded-md" 
+            <Input
             type="text" placeholder="Type the task description..." 
             value={description}
             onChange={(event)=> setDescription(event.target.value)}/> 

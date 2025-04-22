@@ -1,6 +1,7 @@
 import { ChevronLeftIcon } from "lucide-react";
 import { useSearchParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
+import Title from "../components/Title";
 
 function TaskPage(){
 
@@ -22,9 +23,8 @@ function TaskPage(){
                     <ChevronLeftIcon/>
                 </button>
             </div>
-            <h1 className="text-3xl text-slate-100 font-bold text-center">
-                Details of the task
-            </h1>
+
+            <Title>Details of the task</Title>
 
         <div className="bg-slate-200 p-4 rounded-md">
             <h2 className="text-xl font-bold text-slate-600 text-center">{title}</h2>
