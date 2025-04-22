@@ -12,9 +12,8 @@ function AddTask({onAddTaskSubmit}){
             type="text" placeholder="Type the task..." 
             //Setting the value to the state one
             value={title}
-            // Using event changer from JS to grab the value
+            // Using event changer from JS to grab the value change
             onChange={(event)=> setTitle(event.target.value)}/> 
-
 
             <input className="border-slate-300 outline-slate-400 px-4 py-2 rounded-md" 
             type="text" placeholder="Type the task description..." 
