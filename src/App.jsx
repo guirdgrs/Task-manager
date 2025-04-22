@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AddTask from "./components/AddTask";
 import Tasks from "./components/tasks";
 import { v4 } from "uuid";
+import { use } from "react";
 
 function App(){
 
@@ -12,9 +13,26 @@ function App(){
 
 
   // useEffect is used to run a function when the component is mounted
-  useEffect (() =>{
+  useEffect (() => {
     localStorage.setItem("tasks", JSON.stringify(tasks)) // Setting the tasks in local storage
-  }, [tasks]) // The function will run when the tasks state changes
+  }, [tasks]); // The function will run when the tasks state changes
+
+
+  // Learning about API's
+  useEffect(() => {
+    // Using async function to fetch data from the API
+    async function fetchTasks() {
+          // Calling the API
+    const response = await fetch("https://jsonplaceholder.typicode.com/todos?_limit=10",
+      {method: "GET"}); 
+      
+    // The method is GET, so we are getting the data from the API
+    const data = await response.json();
+
+    setTasks(data);
+    }
+    // fetchTasks(); // Calling the function
+   }, []); // This is an empty array, so the function will only run once when the component is mounted
 
 // Function to change the state of the button
 function onTaskClick(taskId){
