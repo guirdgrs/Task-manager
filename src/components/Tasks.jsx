@@ -1,4 +1,4 @@
-import { Accessibility, ChevronRightIcon, DeleteIcon, TrashIcon } from "lucide-react";
+import { Accessibility, CheckIcon, ChevronRightIcon, DeleteIcon, TrashIcon } from "lucide-react";
 import {useNavigate} from "react-router-dom";
 import Button from "./Button";
 
@@ -26,9 +26,11 @@ function Tasks({tasks, onTaskClick, onDeleteTaskClick}){
             {/* When working with a function by props you use this sintax to pass the id */}
             {/* Button to risk the task */}
             <button onClick={() => onTaskClick(task.id)} 
-            className={`bg-slate-400 w-full text-left text-white p-2 rounded-md 
+            className={`bg-slate-400 w-full text-left text-white p-2 rounded-md flex items-center gap-2
             // Using JS in the class as a condition to add a class if the condition is true
             ${task.isCompleted && "line-through"}`}>
+                {/* Icon to show if the task is completed or not using ternary comparation */}
+                {task.isCompleted && <CheckIcon className="inline-block mr-2"/>}
                 {task.title}
                 </button>
 
