@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddTask from "./components/AddTask";
 import Tasks from "./components/tasks";
 import { v4 } from "uuid";
@@ -6,27 +6,15 @@ import { v4 } from "uuid";
 function App(){
 
   // Creating the list state of the task list
-  const [tasks, setTasks] = useState([{
-    id: 1,
-    title: "Study",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    isCompleted: false,
-  },
+  const [tasks, setTasks] = useState( // Getting the tasks from local storage or setting it to an empty array
+    JSON.parse(localStorage.getItem("tasks")) || []
+  );
 
-  {
-    id: 2,
-    title: "Read",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    isCompleted: false,
-  },
 
-  {
-    id: 3,
-    title: "Practice",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    isCompleted: false,
-  }
-]);
+  // useEffect is used to run a function when the component is mounted
+  useEffect (() =>{
+    localStorage.setItem("tasks", JSON.stringify(tasks)) // Setting the tasks in local storage
+  }, [tasks]) // The function will run when the tasks state changes
 
 // Function to change the state of the button
 function onTaskClick(taskId){
